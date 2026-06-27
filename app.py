@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Bienvenue sur mon premier projet CI/CD avec Docker et GitHub Actions !"
+    return "Bienvenue sur mon premier projet CI/CD avec Docker et GitHub Actions devops !"
 
 
 @app.route("/About")
