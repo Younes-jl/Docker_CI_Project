@@ -12,6 +12,10 @@ def test_home():
     assert response.status_code == 200
     assert "Bienvenue sur mon premier projet CI/CD" in response.get_data(as_text=True)
 
+def test_add():
+    assert app.add(2, 3) == 5
+    assert app.add(-1, 1) == 0
+    assert app.add(0, 0) == 0
 
 def test_about():
     client = app.test_client()
