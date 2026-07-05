@@ -7,8 +7,6 @@ def home():
     return "Bienvenue sur mon premier projet CI/CD avec Docker et GitHub Actions devops1 --- !"
 
 
-def add(a, b):
-    return a + b
 
 @app.route("/About")
 def about():
