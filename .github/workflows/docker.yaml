@@ -63,3 +63,24 @@ jobs:
           platforms: linux/amd64,linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Deploy to Ubuntu Server
+        uses: appleboy/ssh-action@v1.2.2
+
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+          script: |
+            docker pull younesach/flask-ci-app:latest
+
+            docker stop Flask-Application || true
+
+            docker rm Flask-Application || true
+
+            docker run -d \
+            --name Flask-Application \
+            -p 5000:5000 \
+            --restart unless-stopped \
+            younesach/flask-ci-app:latest    
